@@ -10,10 +10,10 @@ export default function Home() {
           Capturing moments through the lens. Explore the stories behind each frame.
         </p>
         <div className="space-x-4">
-          <Link to="/blogs">
+          <Link to="/home/blogs">
             <button className="bg-white text-black px-6 py-2 rounded-md hover:bg-gray-300 transition">View Blog</button>
           </Link>
-          <Link to="/contact">
+          <Link to="/home/contact">
             <button className="border border-white px-6 py-2 rounded-md hover:bg-white hover:text-black transition">Book a Session</button>
           </Link>
         </div>
@@ -35,7 +35,7 @@ export default function Home() {
           Hi, I'm Dilsha – a passionate photographer sharing stories through powerful images.
           My lens captures the moments that words can't express. Let's create something beautiful together.
         </p>
-        <Link to="/about">
+        <Link to="/home/about">
           <button className="mt-6 px-6 py-2 bg-black text-white rounded-md hover:bg-gray-800 transition">Learn More</button>
         </Link>
       </div>

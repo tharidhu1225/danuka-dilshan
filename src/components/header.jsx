@@ -66,10 +66,10 @@ export default function Header() {
             </button>
 
             <nav className="mt-4 space-y-5 flex flex-col">
-              <NavLink to="/" label="Home" icon={<FaHome />} onClick={() => setIsOpen(false)} />
-              <NavLink to="/blogs" label="Blogs" icon={<SiBlogger />}  onClick={() => setIsOpen(false)}/>
-              <NavLink to="/about" label="About Us" icon={<FcAbout />}  onClick={() => setIsOpen(false)}/>
-              <NavLink to="/contact" label="Contact Us" icon={<FaPhone />}  onClick={() => setIsOpen(false)}/>
+              <NavLink to="/home/dash" label="Home" icon={<FaHome />} onClick={() => setIsOpen(false)} />
+              <NavLink to="/home/blogs" label="Blogs" icon={<SiBlogger />}  onClick={() => setIsOpen(false)}/>
+              <NavLink to="/home/about" label="About Us" icon={<FcAbout />}  onClick={() => setIsOpen(false)}/>
+              <NavLink to="/home/contact" label="Contact Us" icon={<FaPhone />}  onClick={() => setIsOpen(false)}/>
             </nav>
           </motion.div>
         </motion.div>
