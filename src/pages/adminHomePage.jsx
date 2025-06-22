@@ -1,87 +1,132 @@
 import { Link, Route, Routes, useNavigate } from "react-router-dom";
-import { BsGraphUp, BsBoxSeam, BsCart4, BsPeopleFill } from "react-icons/bs";
+import {
+  BsGraphUp,
+  BsPeopleFill,
+  BsList,
+  BsX,
+} from "react-icons/bs";
+import { ImBlogger2 } from "react-icons/im";
 import AdminProductsPage from "./admin/adminProductsPage";
 import AddProductForm from "./admin/addProductForm";
 import EditProductForm from "./admin/editProductForm";
-import AdminOrdersPage from "./admin/adminOrderPage";
+import AdminUsers from "./admin/viewAllUsers";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import axios from "axios";
-import AdminUsers from "./admin/viewAllUsers";
+import DashboardPage from "./admin/dashbord";
+import { FaSuitcase } from "react-icons/fa";
+import Bookings from "./admin/viewBokings";
 
 export default function AdminHomePage() {
-  const [user,setUser] = useState(null)
+  const [user, setUser] = useState(null);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const navigate = useNavigate();
-  useEffect(()=>{
+
+  useEffect(() => {
     const token = localStorage.getItem("token");
-    console.log(token)
-    if (!token) {      
-      navigate("/")
+    if (!token) {
+      navigate("/");
       return;
     }
+
     axios
       .get(import.meta.env.VITE_BACKEND_URL + "/api/users/me", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-      }).then((res)=>{
-        if(res.data.type!="admin"){
-          console.log(res.data.type)
-          toast.error("Unauthorized access")
-          navigate("/")
-        }else{
-          setUser(res.data)
-        }
-
-      }).catch((err)=>{
-        console.error(err)
-        toast.error("Failed to fetch user data")
-        navigate("/")
       })
-    
-  },[])
+      .then((res) => {
+        if (res.data.type !== "admin") {
+          toast.error("Unauthorized access");
+          navigate("/");
+        } else {
+          setUser(res.data);
+        }
+      })
+      .catch(() => {
+        toast.error("Failed to fetch user data");
+        navigate("/");
+      });
+  }, []);
+
   return (
-    <div className="bg-blue-200 w-full h-screen flex">
-      <div className="w-[20%] h-screen bg-blue-500 flex flex-col items-center py-4">
-        <Link 
-          className="flex flex-row items-center mb-4 text-white hover:text-blue-200" 
-          to="/admin/dashboard"
-        >
-          <BsGraphUp className="mr-2" /> Dashboard
-        </Link>
+    <div className="flex flex-col md:flex-row min-h-screen bg-white text-black relative">
+      {/* Sidebar */}
+      <div
+  className={`bg-black text-white fixed top-0 left-0 z-40 transform transition-transform duration-300 ease-in-out 
+    md:relative md:translate-x-0 md:w-1/5 w-3/4 max-w-xs
+    ${sidebarOpen ? "translate-x-0" : "-translate-x-full"} 
+    h-full md:min-h-screen`}
+>
 
-        <Link 
-          className="flex flex-row items-center mb-4 text-white hover:text-blue-200" 
-          to="/admin/products"
-        >
-          <BsBoxSeam className="mr-2" /> Blogs
-        </Link>
+        {/* Top bar with close icon on mobile */}
+        <div className="flex justify-between items-center px-4 py-3 md:hidden">
+          <h2 className="text-lg font-semibold">Admin Menu</h2>
+          <button onClick={() => setSidebarOpen(false)} className="text-white">
+            <BsX size={24} />
+          </button>
+        </div>
 
-        <Link 
-          className="flex flex-row items-center text-white hover:text-blue-200" 
-          to="/admin/customers"
-        >
-          <BsPeopleFill className="mr-2" /> Customers
-        </Link>
+        <div className="flex flex-col items-start space-y-6 px-6 mt-6 md:mt-12">
+          <Link
+            to="/admin"
+            onClick={() => setSidebarOpen(false)}
+            className="flex items-center gap-2 hover:text-gray-300"
+          >
+            <BsGraphUp /> Dashboard
+          </Link>
+          <Link
+            to="/admin/products"
+            onClick={() => setSidebarOpen(false)}
+            className="flex items-center gap-2 hover:text-gray-300"
+          >
+            <ImBlogger2 /> Blogs
+          </Link>
+          <Link
+            to="/admin/customers"
+            onClick={() => setSidebarOpen(false)}
+            className="flex items-center gap-2 hover:text-gray-300"
+          >
+            <	BsPeopleFill /> Customers
+          </Link>
+          <Link
+            to="/admin/bookings"
+            onClick={() => setSidebarOpen(false)}
+            className="flex items-center gap-2 hover:text-gray-300"
+          >
+            <FaSuitcase /> Bookings
+          </Link>
+        </div>
       </div>
 
-      <div className="w-[80%] h-screen ">
+      {/* Toggle Sidebar Button (hamburger) */}
+      {!sidebarOpen && (
+  <button
+    className="absolute top-4 left-4 md:hidden text-black z-50"
+    onClick={() => setSidebarOpen(true)}
+  >
+    <BsList size={28} />
+  </button>
+)}
 
-        {user!=null&&<Routes path="/*">
-          <Route path="/" element={<h1>Dashboard</h1>} />
-          <Route path="/products" element={<AdminProductsPage/>} />
-          <Route path="/products/addProduct" element={<AddProductForm/>} />
-          <Route path="/products/editProduct" element={<EditProductForm/>} />
-          <Route path="/customers" element={<AdminUsers/>} />
-          <Route path="/*" element={<h1>404 not found the admin page</h1>}/>
-        </Routes>}
-        {
-          user==null&&<div className="w-full h-full flex justify-center items-center">
-            {/* animating loading page */}
-            <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-accent"></div>
 
+      {/* Main Content */}
+      <div className="w-full md:w-4/5 p-4 mt-12 md:mt-0">
+        {user !== null ? (
+          <Routes>
+            <Route path="/" element={<DashboardPage/>} />
+            <Route path="/products" element={<AdminProductsPage />} />
+            <Route path="/products/addProduct" element={<AddProductForm />} />
+            <Route path="/products/editProduct" element={<EditProductForm />} />
+            <Route path="/customers" element={<AdminUsers />} />
+            <Route path="*" element={<h1 className="text-red-600">404 Not Found</h1>} />
+            <Route path="/bookings" element={<Bookings />} />
+          </Routes>
+        ) : (
+          <div className="w-full h-full flex justify-center items-center">
+            <div className="animate-spin rounded-full h-20 w-20 border-t-4 border-b-4 border-black"></div>
           </div>
-        }
+        )}
       </div>
     </div>
   );
