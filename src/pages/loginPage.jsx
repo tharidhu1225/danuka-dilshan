@@ -3,13 +3,17 @@ import axios from 'axios';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
+import { FaEye, FaEyeSlash } from 'react-icons/fa'; // 👁️ icon
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false); // 👁️
+  const [loading, setLoading] = useState(false);
 
   const googleLogin = useGoogleLogin({
     onSuccess: (res) => {
+      setLoading(true);
       axios.post(import.meta.env.VITE_BACKEND_URL + "/api/users/google", {
         token: res.access_token
       }).then((res) => {
@@ -23,11 +27,16 @@ export default function LoginPage() {
             window.location.href = "/home/dash";
           }
         }
+      }).catch(() => {
+        toast.error("Google login failed");
+      }).finally(() => {
+        setLoading(false);
       });
     }
   });
 
   function login() {
+    setLoading(true);
     axios.post(import.meta.env.VITE_BACKEND_URL + "/api/users/login", {
       email,
       password
@@ -43,6 +52,10 @@ export default function LoginPage() {
       } else {
         window.location.href = "/home/dash";
       }
+    }).catch(() => {
+      toast.error("Login failed");
+    }).finally(() => {
+      setLoading(false);
     });
   }
 
@@ -64,32 +77,52 @@ export default function LoginPage() {
               onChange={(e) => setEmail(e.target.value)}
               className="w-full mt-1 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
               placeholder="you@example.com"
+              disabled={loading}
             />
           </div>
 
-          <div>
+          <div className="relative">
             <label className="block text-sm font-medium">Password</label>
             <input
-              type="password"
+              type={showPassword ? "text" : "password"}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full mt-1 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
+              className="w-full mt-1 px-4 py-2 pr-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
               placeholder="••••••••"
+              disabled={loading}
             />
+            <span
+              className="absolute right-3 top-9 cursor-pointer text-gray-600"
+              onClick={() => setShowPassword(!showPassword)}
+              title={showPassword ? "Hide password" : "Show password"}
+            >
+              {showPassword ? <FaEye /> : <FaEyeSlash /> }
+            </span>
           </div>
 
           <button
             onClick={login}
-            className="w-full bg-black text-white py-2 rounded-md hover:bg-gray-800 transition duration-200"
+            disabled={loading}
+            className={`w-full py-2 rounded-md transition duration-200
+              ${loading ? 'bg-gray-500 cursor-not-allowed' : 'bg-black hover:bg-gray-800 text-white'}`}
           >
-            Login
+            {loading ? (
+              <span className="flex items-center justify-center gap-2">
+                <svg className="animate-spin h-5 w-5 text-white" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                </svg>
+                Logging in...
+              </span>
+            ) : "Login"}
           </button>
 
           <button
             onClick={() => googleLogin()}
+            disabled={loading}
             className="w-full border border-black py-2 rounded-md hover:bg-black hover:text-white transition duration-200"
           >
-            Login with Google
+            {loading ? "Please wait..." : "Login with Google"}
           </button>
         </div>
 
