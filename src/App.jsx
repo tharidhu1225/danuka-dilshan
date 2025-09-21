@@ -9,6 +9,7 @@ import ResponseTest from './pages/admin/responseTest'
 import { GoogleOAuthProvider } from '@react-oauth/google'
 import PhotographerHomePage from './pages/UserInterface'
 import Register from './pages/register'
+import Maintenance from './pages/maintaince'
 
 
 
@@ -23,7 +24,7 @@ function App() {
       <Toaster position='top-right'/>
       <GoogleOAuthProvider clientId='474190677487-al5kcu80p13msbvmmf8tu52d8la5bgie.apps.googleusercontent.com'>
       <Routes path="/*">
-        <Route path="/" element={<PhotographerHomePage/>}/>         
+        <Route path="/" element={<Maintenance/>}/>         
         <Route path="/home/*" element={<HomePage/>}/>   
         <Route path="/login" element={<LoginPage/>}/>
         <Route path="/register" element={<Register/>}/>
