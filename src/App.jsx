@@ -1,39 +1,46 @@
-import { useState } from 'react'
-import './App.css'
-import LoginPage from './pages/loginPage'
-import HomePage from './pages/homePage'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import AdminHomePage from './pages/adminHomePage'
-import { Toaster } from 'react-hot-toast'
-import ResponseTest from './pages/admin/responseTest'
-import { GoogleOAuthProvider } from '@react-oauth/google'
-import PhotographerHomePage from './pages/UserInterface'
-import Register from './pages/register'
-import Maintenance from './pages/maintaince'
+import { useState } from 'react';
+import './App.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
-
+import Header from './components/Header';
+import HomePage from './pages/homePage';
+import Footer from './components/footer';
+import ContactUs from './pages/contact';
+import AboutUs from './pages/about';
+import Packages from './pages/packege';
+import BlogPage from './pages/blog';
+import PostOverview from './pages/postOverview';
 
 function App() {
-  const [count, setCount] = useState(0)
-
-
-
   return (
-    <div className='bg-primary'>
-     <BrowserRouter>
-      <Toaster position='top-right'/>
-      <GoogleOAuthProvider clientId='474190677487-al5kcu80p13msbvmmf8tu52d8la5bgie.apps.googleusercontent.com'>
-      <Routes path="/*">
-        <Route path="/" element={<Maintenance/>}/>         
-        <Route path="/home/*" element={<HomePage/>}/>   
-        <Route path="/login" element={<LoginPage/>}/>
-        <Route path="/register" element={<Register/>}/>
-        <Route path="/admin/*" element={<AdminHomePage/>}/>             
-      </Routes>
-      </GoogleOAuthProvider>
-     </BrowserRouter>
-    </div>
-  )
+      <div className="bg-primary min-h-screen flex flex-col">
+        <BrowserRouter>
+          <Toaster position="top-right" />
+
+          {/* ✅ Fixed Header */}
+          <Header />
+
+          {/* ✅ Main Content with padding for header */}
+          <div className="pt-[50px] flex-grow">
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/blogs" element={<BlogPage/>} />
+              <Route path="/packages" element={<Packages/>} />
+              <Route path="/about" element={<AboutUs/>} />
+              <Route path="/contact" element={<ContactUs/>} />
+              <Route path="/blogs/:id" element={<PostOverview />} />
+              {/* 404 Route */}
+              <Route path="*" element={<h1 className="text-red-500 text-xl">404 Not Found</h1>} />
+            </Routes>
+          </div>
+
+          {/* ✅ Footer goes here */}
+          <Footer />
+        </BrowserRouter>
+      </div>
+  );
 }
 
-export default App
+export default App;
