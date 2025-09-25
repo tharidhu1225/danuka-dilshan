@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
-import Header from './components/Header';
+import Header from './components/header';
 import HomePage from './pages/homePage';
 import Footer from './components/footer';
 import ContactUs from './pages/contact';
