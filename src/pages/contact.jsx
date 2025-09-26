@@ -40,7 +40,7 @@ export default function ContactUs() {
           >
             <FaPhoneAlt className="text-yellow-600 text-4xl mb-4 group-hover:scale-110 transition-transform duration-200" />
             <h2 className="text-lg font-semibold mb-1">Call Us</h2>
-            <p className="text-sm text-gray-600">+94 77 123 4567</p>
+            <p className="text-sm text-gray-600">+94 76 379 3551</p>
           </a>
         </div>
 
