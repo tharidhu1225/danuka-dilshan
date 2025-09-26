@@ -12,6 +12,7 @@ import AboutUs from './pages/about';
 import Packages from './pages/packege';
 import BlogPage from './pages/blog';
 import PostOverview from './pages/postOverview';
+import NotFound from './components/404';
 
 function App() {
   return (
@@ -32,7 +33,7 @@ function App() {
               <Route path="/contact" element={<ContactUs/>} />
               <Route path="/blogs/:id" element={<PostOverview />} />
               {/* 404 Route */}
-              <Route path="*" element={<h1 className="text-red-500 text-xl">404 Not Found</h1>} />
+              <Route path="*" element={<NotFound/>} />
             </Routes>
           </div>
 

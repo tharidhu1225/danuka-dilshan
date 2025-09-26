@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import EmptyState from "../components/emptyState";
+import Loading from "../components/loading";
 
 export default function BlogPage() {
   const [posts, setPosts] = useState([]);
@@ -50,9 +52,9 @@ export default function BlogPage() {
       {/* Posts Grid */}
       <div className="max-w-6xl mx-auto px-4 mt-10">
         {loading ? (
-          <p className="text-center text-gray-500 text-lg">Loading blogs...</p>
+          <Loading/>
         ) : posts.length === 0 ? (
-          <p className="text-center text-gray-500 text-lg">No blog posts found.</p>
+          <EmptyState/>
         ) : (
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {posts.map((post) => (

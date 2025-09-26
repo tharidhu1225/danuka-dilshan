@@ -99,12 +99,17 @@ export default function Packages() {
 
               {/* Call Us Button with gradient hover */}
               <a
-                href="tel:+94771234567"
-                className="mt-auto inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-full hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 shadow-md hover:shadow-lg"
-              >
-                <FaPhoneAlt className="mr-2" />
-                Call Us
-              </a>
+  href={`https://wa.me/94763793551?text=${encodeURIComponent(
+    `Hi, I'm interested in the "${pkg.title}" package priced at ${pkg.price}. Please send me more details.`
+  )}`}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="mt-auto inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-full hover:from-green-600 hover:to-emerald-700 transition-all duration-300 shadow-md hover:shadow-lg"
+>
+  <FaPhoneAlt className="mr-2" />
+  WhatsApp
+</a>
+
             </div>
           ))}
         </div>

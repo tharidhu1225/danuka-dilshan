@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import HeroSection from "../components/homeHero";
+import EmptyState from "../components/emptyState";
+import Loading from "../components/loading";
 
 export default function HomePage() {
   const [featuredPosts, setFeaturedPosts] = useState([]);
@@ -35,29 +38,7 @@ export default function HomePage() {
   return (
     <div className="bg-gray-50 text-gray-900">
       {/* Hero Section */}
-      <section className="relative h-[100vh] w-full overflow-hidden">
-        <img
-          src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1470&q=80"
-          alt="Hero Background"
-          className="absolute inset-0 w-full h-full object-cover object-center"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/20"></div>
-
-        <div className="relative z-10 flex flex-col items-center justify-center text-center h-full px-4 sm:px-6">
-          <h1 className="text-white text-4xl sm:text-5xl md:text-6xl font-bold drop-shadow-lg animate-fadeIn">
-            Welcome to Dilshan Blog
-          </h1>
-          <p className="text-gray-200 text-lg sm:text-xl mt-4 max-w-2xl animate-fadeIn delay-150">
-            Discover amazing blogs, stories, and insights from our community.
-          </p>
-          <Link
-            to="/blogs"
-            className="mt-8 inline-block bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full text-lg transition animate-fadeIn delay-300"
-          >
-            Explore Blogs
-          </Link>
-        </div>
-      </section>
+      <HeroSection/>
 
       {/* About Section */}
       <section className="py-16 bg-white px-4">
@@ -75,11 +56,11 @@ export default function HomePage() {
     <h2 className="text-3xl font-semibold mb-10 text-center">Featured Posts</h2>
 
     {loading ? (
-      <p className="text-center text-gray-500 text-lg">Loading featured posts...</p>
+      <Loading/>
     ) : error ? (
       <p className="text-center text-red-500 text-lg">{error}</p>
     ) : featuredPosts.length === 0 ? (
-      <p className="text-center text-gray-500 text-lg">No featured posts found.</p>
+      <EmptyState/>
     ) : (
       <>
         {/* Top 3 Featured Posts */}

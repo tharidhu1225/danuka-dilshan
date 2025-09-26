@@ -11,7 +11,7 @@ export default function ContactUs() {
         <div className="grid md:grid-cols-3 gap-8">
           {/* WhatsApp */}
           <a
-            href="https://wa.me/94771234567"
+            href="https://wa.me/94763793551"
             target="_blank"
             rel="noopener noreferrer"
             className="group flex flex-col items-center bg-green-100 hover:bg-green-200 transition rounded-xl p-6 text-center shadow-md"
@@ -23,7 +23,7 @@ export default function ContactUs() {
 
           {/* Facebook */}
           <a
-            href="https://facebook.com/your-page"
+            href="https://www.facebook.com/people/Dhanuka-Dilshan-Photography/61570472307270/?sk=about"
             target="_blank"
             rel="noopener noreferrer"
             className="group flex flex-col items-center bg-blue-100 hover:bg-blue-200 transition rounded-xl p-6 text-center shadow-md"
@@ -35,7 +35,7 @@ export default function ContactUs() {
 
           {/* Call */}
           <a
-            href="tel:+94771234567"
+            href="tel:+94763793551"
             className="group flex flex-col items-center bg-yellow-100 hover:bg-yellow-200 transition rounded-xl p-6 text-center shadow-md"
           >
             <FaPhoneAlt className="text-yellow-600 text-4xl mb-4 group-hover:scale-110 transition-transform duration-200" />
