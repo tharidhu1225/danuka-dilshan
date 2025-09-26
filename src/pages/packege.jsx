@@ -3,24 +3,21 @@ import { FaPhoneAlt } from "react-icons/fa";
 export default function Packages() {
   const packages = [
     {
-      title: "Basic Package",
-      price: "LKR 2,500",
+      title: "Single Shoot",
+      price: "LKR 8,000",
       features: [
-        "1 Blog Post",
-        "Image Optimization",
-        "SEO Friendly",
+        "Edited Photos 20",
         "3 Days Delivery",
       ],
       color: "border-blue-500",
       highlight: false,
     },
     {
-      title: "Standard Package",
-      price: "LKR 4,500",
+      title: "Couple Shoot",
+      price: "LKR 12,000",
       features: [
-        "3 Blog Posts",
-        "Custom Banner",
-        "SEO + Keywords",
+        "Edited Photos 20",
+        "A4 size Enlargement",
         "5 Days Delivery",
       ],
       color: "border-green-500",
