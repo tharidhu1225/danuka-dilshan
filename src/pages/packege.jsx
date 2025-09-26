@@ -24,16 +24,36 @@ export default function Packages() {
       highlight: false,
     },
     {
-      title: "Premium Package",
-      price: "LKR 7,500",
+      title: "Your Memorable Day",
+      price: "LKR 10,000",
       features: [
-        "Unlimited Posts",
-        "Social Media Sharing",
-        "Full SEO Optimization",
-        "Priority Support",
+        "Birthdays , Big Girl Parties",
+        "A4 size Enlargement",
       ],
       color: "border-purple-500",
+      highlight: false,
+    },
+    {
+      title: "Wedding Shoot 2 Days",
+      price: "LKR 55,000",
+      features: [
+        "16 x 24 Framd Photo",
+        "50 Thankyou Cards",
+        "Full HD VideoShoot",
+      ],
+      color: "border-red-800",
       highlight: true,
+    },
+    {
+      title: "Graduation Shoot",
+      price: "LKR 12,000",
+      features: [
+        "Professional Edited Soft Copies",
+        "Including Family Photos",
+        "10 x 12 Elargement",
+      ],
+      color: "border-orange-500",
+      highlight: false,
     },
   ];
 
