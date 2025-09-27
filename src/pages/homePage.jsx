@@ -41,13 +41,14 @@ export default function HomePage() {
       <HeroSection/>
 
       {/* About Section */}
-      <section className="py-16 bg-white px-4">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-semibold text-center mb-6">About Us</h2>
-          <p className="text-lg text-gray-700 leading-relaxed text-center">
-            Welcome to Dilshan Blog, your one-stop destination for insightful content, trending blogs, and creative ideas. Join our community to explore stories that matter.
-          </p>
-        </div>
+      <section className="py-16 px-6 max-w-5xl mx-auto text-center">
+        <h2 className="text-4xl font-bold mb-6">About Me</h2>
+        <p className="text-gray-700 leading-relaxed text-lg max-w-3xl mx-auto">
+          I’m Dhanuka, a passionate photographer with over 3 years of experience
+          capturing life's most beautiful moments. From portraits to landscapes,
+          I believe every picture should tell a unique story and evoke genuine emotion.
+          My work blends creativity with technical skill to deliver stunning, timeless images.
+        </p>
       </section>
 
      {/* Featured Blogs */}

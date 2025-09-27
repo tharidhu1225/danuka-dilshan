@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 
 const backgroundImages = [
   "/img.jpg",
-  "/img2.jpg",
-  "/img3.jpg",
-  "/img4.jpg",
-  "/img5.jpg",
+  "/pt3.JPG",
+  "/pt1.JPG",
+  "/pt2.JPG",
+  "/pt4.JPG",
 ];
 
 export default function HeroSection() {
@@ -38,19 +38,20 @@ export default function HeroSection() {
 
       {/* Content */}
       <div className="relative z-30 flex flex-col items-center justify-center text-center h-full px-4 sm:px-6">
-        <h1 className="text-white text-4xl sm:text-5xl md:text-6xl font-extrabold drop-shadow-lg">
-          Welcome to <span className="text-gray-400">Dilshan Blog</span>
-        </h1>
-        <p className="text-gray-200 text-lg sm:text-xl mt-4 max-w-2xl">
-          Discover amazing blogs, stories, and insights from our community.
-        </p>
-        <a
-          href="/blogs"
-          className="mt-8 inline-block bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full text-lg transition"
-        >
-          Explore Blogs
-        </a>
-      </div>
+  <h1 className="text-white text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight drop-shadow-xl">
+    Welcome to <span className="text-indigo-300">Dhanuka Dilshan Photography</span>
+  </h1>
+  <p className="text-gray-200 text-lg sm:text-xl mt-6 max-w-2xl leading-relaxed">
+    Explore stunning visuals, captivating stories, and creative insights from a passionate photographer’s lens.
+  </p>
+  <a
+    href="/blogs"
+    className="mt-8 inline-block bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-3 rounded-full text-lg font-medium transition transform hover:scale-105 shadow-lg"
+  >
+    Explore Blogs
+  </a>
+</div>
+
     </section>
   );
 }
