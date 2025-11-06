@@ -4,7 +4,7 @@ export default function Packages() {
   const packages = [
     {
       title: "Single Shoot",
-      price: "LKR 8,000",
+      price: "LKR 8,000/=",
       features: [
         "Edited Photos 20",
         "3 Days Delivery",
@@ -14,7 +14,7 @@ export default function Packages() {
     },
     {
       title: "Couple Shoot",
-      price: "LKR 12,000",
+      price: "LKR 12,000/=",
       features: [
         "Edited Photos 20",
         "A4 size Enlargement",
@@ -25,7 +25,7 @@ export default function Packages() {
     },
     {
       title: "Your Memorable Day",
-      price: "LKR 10,000",
+      price: "LKR 10,000/=",
       features: [
         "Birthdays , Big Girl Parties",
         "A4 size Enlargement",
@@ -34,19 +34,22 @@ export default function Packages() {
       highlight: false,
     },
     {
-      title: "Wedding Shoot 2 Days",
-      price: "LKR 55,000",
+      title: "Wedding Shoot",
+      price: "LKR 40,000/=",
       features: [
+        "Pre Shoot FREE",
+        "Homecoming Shoot FREE",
+        "All Original Raw Copies FREE",
+        "Full HD Video FREE",
+        "Thank you Cards",
         "16 x 24 Framd Photo",
-        "50 Thankyou Cards",
-        "Full HD VideoShoot",
       ],
       color: "border-red-800",
       highlight: true,
     },
     {
       title: "Graduation Shoot",
-      price: "LKR 12,000",
+      price: "LKR 12,000/=",
       features: [
         "Professional Edited Soft Copies",
         "Including Family Photos",
@@ -54,6 +57,30 @@ export default function Packages() {
       ],
       color: "border-orange-500",
       highlight: false,
+    },
+    {
+      title: "Birthday Shoot Basic",
+      price: "LKR 8,000/=",
+      features: [
+        "2 Hours. Photo Session",
+        "50+ Edited Photos",
+        "20 Raw Photos",
+        "FREE 8x12 Enlargement",
+      ],
+      color: "border-gray-500",
+      highlight: false,
+    },
+{
+    title: "Birthday Shoot Pro",
+      price: "LKR 11,000/=",
+      features: [
+        "3 Hours. Photo Session",
+        "80+ Edited Photos",
+        "35 Raw Photos",
+        "FREE 12x18 Enlargement",
+      ],
+      color: "border-gray-500",
+      highlight: true,
     },
   ];
 
@@ -76,21 +103,21 @@ export default function Packages() {
               {/* Highlight badge */}
               {pkg.highlight && (
                 <div className="absolute -top-4 right-4 bg-purple-600 text-white text-xs px-3 py-1 rounded-full shadow-md animate-bounce">
-                  Best Value
+                  GREAT OFFER
                 </div>
               )}
 
               <div>
-                <h2 className="text-2xl font-semibold text-gray-800 mb-2">
+                <h2 className="text-2xl font-bold text-gray-800 mb-2">
                   {pkg.title}
                 </h2>
-                <p className="text-4xl font-bold text-blue-600 mb-6">
+                <p className="text-4xl font-bold text-red-600 mb-6">
                   {pkg.price}
                 </p>
                 <ul className="text-left mb-6 space-y-3">
                   {pkg.features.map((feature, i) => (
-                    <li key={i} className="text-gray-700 flex items-center">
-                      <span className="w-2 h-2 rounded-full bg-blue-500 mr-3"></span>
+                    <li key={i} className="text-gray-700 font-semibold flex items-center">
+                      <span className="w-2 h-2 rounded-full bg-gray-900 mr-3"></span>
                       {feature}
                     </li>
                   ))}
